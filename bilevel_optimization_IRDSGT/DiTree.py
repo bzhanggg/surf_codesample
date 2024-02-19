@@ -13,6 +13,11 @@ class DiTree:
     def __init__(self):
         return
 
+    """
+    Creates a directed graph with (v) vertices and (v + addl_e - 1) edges.
+    The 0 vertex is guaranteed to be a root node, i.e. there exists a path from
+    the 0 vertex to every other vertex in G.
+    """
     def __random_root_tree(self, v, addl_e):
         G = nx.DiGraph()
         # root node
@@ -29,6 +34,11 @@ class DiTree:
                 i += 1
         return G
 
+    """
+    Creates a directed graph with (v) vertices and (v + addl_e - 1) edges.
+    The 0 vertex is guaranteed to be a sink node, i.e. there exists a directed
+    path from every other vertex in G to the 0 vertex.
+    """
     def __random_sink_tree(self, v, addl_e):
         G = nx.DiGraph()
         # sink node
@@ -45,6 +55,11 @@ class DiTree:
                 i += 1
         return G
     
+    """
+    Randomly assigns weights to every edge in G according to paper.
+    is_row_stoch determines if the resultant weight matrix W is row stochastic (True)
+    or column stochastic (False)
+    """
     def __assign_weights(self, G: nx.DiGraph, is_row_stoch: bool):
         A = nx.to_numpy_array(self.G)
         W = np.zeros((A.shape))
@@ -64,6 +79,9 @@ class DiTree:
                 W[i,i] = c_i / (len(out_neighbors) + c_i)
         return W
 
+    """
+    Returns a tuple of (NetworkX graph, weight matrix)
+    """
     def sparse_tree_digraph(self, v, additional_e, is_row_stoch=True, draw=False):
         self.G = self.__random_root_tree(v, additional_e) if is_row_stoch else self.__random_sink_tree(v, additional_e)
         self.W = self.__assign_weights(self.G, is_row_stoch)
