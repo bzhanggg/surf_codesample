@@ -10,4 +10,4 @@ This is a collection of code projects I have worked on recently (within the last
 
 4. **c_malloc_project**: an assignment for CS214 Systems Programming at Rutgers University, taught by Dr. David Menendez. This project simulates the C standard library's `malloc()` command entirely in the runtime stack.
 
-I also have experience with Java programming, with heavy emphasis on OOP and industry-standard workflow tools. However, I cannot include them here as they are part of the Amazon code base.
+I also have experience with Java programming, with heavy emphasis on OOP and industry-standard workflow tools. They are part of the Amazon code base, so are not included here.
